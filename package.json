@@ -1,0 +1,22 @@
+{
+  "name": "api-controle-financeiro",
+  "version": "1.0.0",
+  "description": "- Usuario\r   - CRUD de usuario\r     - CRUD de cartão\r     - CRUD de gastos\r     - CRUD de receitas",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
