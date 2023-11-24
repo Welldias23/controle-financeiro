@@ -9,8 +9,8 @@ const validateToken = (req, res, next) => {
 
     try {
         const token = authorization.split(" ")[1]
-        const users = verifyToken(token)
-        req.users = users
+        const user = verifyToken(token)
+        req.user = user
         next()
     } catch (error) {
         if (error.name === 'TokenExpiredError') {

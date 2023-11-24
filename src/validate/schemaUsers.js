@@ -5,8 +5,7 @@ const schemaUsers = joi.object({
     'any.required': 'O campo nome é obrigatorio.',
     'string.base': 'O nome precisa ser string.',
   }),
-  lastname: joi.string().required().messages({
-    'any.required': 'O campo sobrenome é obrigatorio.',
+  lastname: joi.string().messages({
     'string.base': 'O sobrenome precisa ser string.',
   }),
   email: joi.string().email().messages({

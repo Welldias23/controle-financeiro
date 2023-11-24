@@ -1,4 +1,4 @@
-const { selectUniqueData, registerData, deleteData } = require("../database/queryDB")
+const { selectUniqueData, registerData, deleteData, updateData } = require("../database/queryDB")
 const {cryptographyPassword, comparePassword} = require("../core/cryptography")
 const {generateToken} = require("../core/jwt")
 
@@ -54,6 +54,7 @@ const loginUser = async(req, res) => {
 
 const detailUser = async (req, res) => {
   const {id} = req.user
+  
   try {
     const user = await selectUniqueData("users", {id})
 
@@ -89,7 +90,7 @@ const updateUser = async (req, res) => {
     
     const updatedUser = {name, lastname, email, password: encryptedPassword}
     
-    await atualizarDados("users", {id}, updatedUser)
+    await updateData("users", {id}, updatedUser)
     
     return res.status(204).json(updatedUser)
   } catch (error) {
@@ -99,14 +100,17 @@ const updateUser = async (req, res) => {
 
 
 const deleteUser = async (req, res) => {
-  const {id} = req.user
+  const {id: idUserLogin} = req.user
+  const {id} = req.params
   try {
     const deletedUser = await selectUniqueData("users", {id})
-
+    
     if (!deletedUser) {
-      return res.status(404).json({mensagem: "Produtor não encontrado."})
+      return res.status(404).json({mensagem: "Usuario não encontrado."})
     }
-
+     if (deletedUser.id !== idUserLogin) {
+      return res.status(404).json({mensagem: "Usuario não encontrado."})
+     }
     await deleteData("users", {id})
     
     return res.status(200).json({mensagem: `O cadastro do usuario ${deletedUser.name} ${deletedUser.lastname} foi excluido.`})

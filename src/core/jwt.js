@@ -6,7 +6,7 @@ const generateToken = (data, time) => {
 }
 
 const verifyToken = (token) => {
-  const token = jwt.verify(token, process.env.PASS_JWT)
+  const tokenjsonwebtoken = jwt.verify(token, process.env.PASS_JWT)
   return tokenjsonwebtoken
 } 
 

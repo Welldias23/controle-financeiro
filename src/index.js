@@ -9,6 +9,6 @@ app.use(express.json())
 
 app.use(routesUsers)
 
-app.listen(PORTA, () => {
+app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`)
 })
